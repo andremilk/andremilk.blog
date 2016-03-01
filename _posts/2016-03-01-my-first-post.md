@@ -3,10 +3,6 @@ published: true
 ---
 
 
-## My first post
-
- 
-
 I've had the intention to create this blog for a while now, but kept postponing it forever. The main purpose of it would be to share my thoughts, solutions and interests.
 
  
