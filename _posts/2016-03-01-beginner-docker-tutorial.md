@@ -1,7 +1,8 @@
 ---
-published: false
+published: true
 layout: post
 ---
+
 
 ## Intro to Docker
 
@@ -49,4 +50,4 @@ Let's see:
 	[dekozo@dekarch ~]$ 
 
 
-Yep, it works!
+Yep, it works! 
