@@ -3,10 +3,9 @@ published: true
 layout: post
 ---
 
+The following posts will be an adaptation of a tutorial I've created for a intro lecture I gave about Docker and it's uses to help Computer Science students in their tasks. 
 
 ## Intro to Docker
-
-The following posts will be an adaptation of a tutorial I've created for a intro lecture I gave about Docker and it's uses to help Computer Science students in their tasks. 
 
 It was created heavily based on the official Docker documentation (that you should definitely read) but in portuguese and with some minor aditions of some explaning with my words. The original document can be found [here](https://docs.google.com/document/d/1R2_vhAWnj8AqAtSOZX4WBiBPgxlnA4p0QW0Y0WvQN50/edit?usp=sharing).
 ***
