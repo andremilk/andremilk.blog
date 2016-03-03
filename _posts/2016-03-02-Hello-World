@@ -88,3 +88,45 @@ But what if I want to copy a file inside the container to my host system? Or the
 	[dekozo@dekarch ~]$
     
 The **docker cp** command will circumvent the isolation between the host and the container. **(To reference files inside the container we should use container_name:/path/to/file)**.
+
+There are a handful of commands to be used on the docker client and you can find them all listed [here](https://docs.docker.com/engine/reference/commandline/), but just to mention a few:
+
+	$ docker inspect my-container
+    
+will inspect the metadata of our container
+
+	$ docker logs -f my-container
+
+will display the logs (and follow it, just like a __tail -f__ would) of our container
+
+	$ docker rename old-name new-name 
+    
+will rename our container
+
+	$ docker stats my-container
+    
+will display some of the resources usage of our container.. you could also check **docker top** out.
+
+The last command on this session will enable us to delete containers. 
+
+Let's check what containers we have so far:
+
+	[dekozo@dekarch ~]$ docker ps -a
+	CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+	fd7705e2aeb9        ubuntu:14.04        "/bin/bash"              19 minutes ago      Up 19 minutes                                   my-container
+	ff3e9e82ff5d        ubuntu:14.04        "/bin/echo 'Hello Wor"   24 minutes ago      Exited (0) 24 minutes ago                       berserk_mclean
+	[dekozo@dekarch ~]$
+    
+Ok, we have two containers: __my-container__ and __beserk_mclean__. Let's remove them!
+
+	[dekozo@dekarch ~]$ docker rm -f my-container berserk_mclean 
+	my-container
+	berserk_mclean
+	[dekozo@dekarch ~]$ 
+
+
+If you check it with  **docker ps -a** you should see there are no more containers. We used the option __-f__ to force docker to remove our running container. If we used just **docker rm my-container berserk_mclean** docker would complain about a running container and asks us to either terminate it or use __-f__.
+
+
+
+
