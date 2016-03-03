@@ -7,6 +7,7 @@ layout: post
 
 
 
+
 What exactly are Docker images? Where and how do they live? How do they reproduce? 
 
 ## Docker images
@@ -197,11 +198,11 @@ There are a bunch of Dockerfile examples available online. You can(should) also 
    
 Ok, but how do I use a Dockerfile to actually build an image?
 
-	`docker build -t user/image-name:tag path/to/Dockerfile`
+	docker build -t user/image-name:tag path/to/Dockerfile
     
 You can tag the same built image with different tags at the same time. This is useful if you want to have a **latest** tag and another specific tag:
 
-	`docker build -t user/image-name -t user/image-name:my-tag path/to/Dockerfile`
+	docker build -t user/image-name -t user/image-name:my-tag path/to/Dockerfile
 
 When we execute this command all the steps listed on the Dockerfile will be taken and your image will be created. If we wish to make our image available to others we can push it to dockerhub. But first we have to login:
 
@@ -215,7 +216,7 @@ When we execute this command all the steps listed on the Dockerfile will be take
     
 and after that we can push our image:
 
-	`docker push image-name:tag`
+	docker push image-name:tag
     
 If you wish to **remove an image locally** you can do this just like:
 
