@@ -28,12 +28,63 @@ That's one of the beauties of containers.. it's fast. The first talk I gave abou
 
 Enough flattering...
 
-The command above 
+The command above will search for the ubuntu image locally and if, not found, download it from the dockerhub (or another registry if configured to do so). If you already have the image available locally the command shouldn't take long but if not it will take some time but the next time you use the same image it will be very fast.
 
-	$ docker run
+Now let's try something different
+
+	[dekozo@dekarch ~]$ docker run -it --rm ubuntu:14.04 /bin/bash
+	root@7f31c91fe7e3:/# 
+
+Now you are running a bash session inside a container you've just created. You might wanna play around a bit.. check all the processes running inside the container, the files and verify that they are different from your host system.
+After that you could exit the container with **Ctrl-D** which will exit it and change the container's status to exited (actually, in this case we used the **__--rm__** flag to autoremove the container after it's exited) or you could get out of it with **Ctrl-P and then Ctrl-Q**. 
+
+In the last command we also used the **__--it__** flag which enables us to interact with the container. For further details you should check the docker documentation.. there you will find more about these flags.
+
+Everytime we create a container in docker and don't name it ourselves a random name will be given to it. This name will consist an adjective, an underscore, and the name of some scientist. (__fun fact: if the combination yield [boring_wozniak](https://github.com/docker/docker/blob/master/pkg/namesgenerator/names-generator.go) docker will reassign another name to the container__)
+
+Let's see our containers:
+
+	[dekozo@dekarch ~]$ docker ps -a
+	CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+	ff3e9e82ff5d        ubuntu:14.04        "/bin/echo 'Hello Wor"   3 seconds ago       Exited (0) 2 seconds ago                       berserk_mclean
+	[dekozo@dekarch ~]$ 
     
-searches for the ubuntu image locally and if, not found, downloads it from the dockerhub (or another registry if configured to do so). If you already have the image available locally the command shouldn't take long but if not it will take some time but the next time you use the same image it will be very fast.
+ The **[docker ps](https://docs.docker.com/engine/reference/commandline/ps/)** command will list our containers. If no option is given it will only list running containers. To see containers in different states other than running we must use the flag __-a__ just like in the example above. There are some ways to filter our results and to format it differently.
 
+Our container was named beserk_mclean ([Malcolm McLean](https://en.wikipedia.org/wiki/Malcom_McLean), the inventor of the modern shipping container) but what if I want to name my container differently?
 
+	[dekozo@dekarch ~]$ docker run -it --name my-container ubuntu:14.04 /bin/bash
+	root@fd7705e2aeb9:/# exit
+	[dekozo@dekarch ~]$ docker start my-container 
+	my-container
+	[dekozo@dekarch ~]$ docker attach my-container 
+	root@fd7705e2aeb9:/# 
+    **Ctrl-P Ctrl-Q**
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+Here we created a container named __my-container__ and started a bash session which we then exited. 
+We started our just exited container with the **docker start** command and then proceeded to attach to it with **docker attach**.
+After that we started again our container.
+
+One way to verify that what happens inside a container does not reflect our host system is doing so:
+
+	[dekozo@dekarch ~]$ docker exec my-container /bin/bash -c "echo 'INSIDE MY-CONTAINER' >> /tmp/foo"
+	[dekozo@dekarch ~]$ echo 'OUTSIDE MY-CONTAINER' >> /tmp/foo
+	[dekozo@dekarch ~]$ docker exec my-container /bin/bash -c "cat /tmp/foo"
+	INSIDE MY-CONTAINER
+	[dekozo@dekarch ~]$ cat /tmp/foo
+	OUTSIDE MY-CONTAINER
+	[dekozo@dekarch ~]$ 
+    
+The **docker exec** command will execute some given command inside a running container. In our case we just used it to create a file __/tmp/foo__ inside the container with the text to indicate that it was inside the container. We then created the __same file__ outside the container with a different text.
+
+But what if I want to copy a file inside the container to my host system? Or the other way around?
+
+	[dekozo@dekarch ~]$ docker cp my-container:/tmp/foo /tmp/foo-outside
+	[dekozo@dekarch ~]$ docker cp /tmp/foo my-container:/tmp/foo-inside
+	[dekozo@dekarch ~]$ cat /tmp/foo-outside 
+	INSIDE MY-CONTAINER
+	[dekozo@dekarch ~]$ docker exec my-container /bin/bash -c "cat /tmp/foo-inside"
+	OUTSIDE MY-CONTAINER
+	[dekozo@dekarch ~]$
+    
+The **docker cp** command will circumvent the isolation between the host and the container. **(To reference files inside the container we should use container_name:/path/to/file)**.
