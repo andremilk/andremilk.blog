@@ -5,6 +5,7 @@ layout: post
 
 
 
+
 What exactly are Docker images? Where and how do they live? How do they reproduce? 
 
 ## Docker images
@@ -126,21 +127,21 @@ The **FROM** instruction will tell docker which __base image__ will be used. In 
         commandN
 You can have the **RUN** instruction in two forms too:
 
-	**RUN** command
+	RUN command
     
 or 
 
-	**RUN** ["command", "parameter1", "parameter2", ... "parameterN"]
+	RUN ["command", "parameter1", "parameter2", ... "parameterN"]
     
 The main difference is that **the first alternative** will run your command through __/bin/bash__ just like `/bin/bash -c "command"` and **the second alternative** will run your command like `/bin/command paramater1 parameter2 ... parameterN`.
 
 **ENV** sets environment variables for the context of building the image. It has two forms:
 
-	**ENV** VARIABLE VALUE
+	ENV VARIABLE VALUE
     
 and
 
-	**ENV** VARIABLE=VALUE
+	ENV VARIABLE=VALUE
     
 Here the differences are that **the first alternative** can only set a variable per line, in contrast **the second alternative** can set multiple variables per line. You can also use variables inside your Dockerfile and use a [few bash modifiers](https://docs.docker.com/engine/reference/builder/#environment-replacement).
 
@@ -152,10 +153,10 @@ Here the differences are that **the first alternative** can only set a variable 
 
 For instance:
 
-	**WORKDIR** /app
-	/app   **WORKDIR** abc
-	└── abc   **WORKDIR** def
-	    └── def **(We end up here, at /app/abc/def)**
+	WORKDIR /app
+	/app   WORKDIR abc
+	└── abc   WORKDIR def
+	    └── def ****(We end up here, at /app/abc/def)****
         
 **CMD** will tell docker what command should be executed when you create a container using this image without passing any command. For instance:
 
@@ -168,7 +169,7 @@ For instance:
     
 We can see that no command was given when creating and running this container (that uses redis image... the __-d__ flag tells docker to run it dettached, in the background). The command set on the redis Dockerfile might be something like
 
-	**CMD** ["/entrypoint.sh", "redis"]
+	CMD ["/entrypoint.sh", "redis"]
     
 If we wish to execute another command we could simply do:
 
@@ -180,8 +181,8 @@ There is also an instruction named **ENTRYPOINT** which gives a little bit more 
 
 If we had in our Dockerfile the following:
 
-	**ENTRYPOINT** ["/bin/echo"]
-    **CMD** ["this is the default value"]
+	ENTRYPOINT ["/bin/echo"]
+    CMD ["this is the default value"]
     
 We could use the same image to echo anything we choose at runtime just by doing:
 
