@@ -1,8 +1,9 @@
 ---
-published: false
+published: true
 layout: post
-date: 2016-03-03T13:00:00.000Z
+date: {}
 ---
+
 
 My container is lonely... it would like to talk to other containers. How could I arrange that?
 
@@ -167,4 +168,3 @@ Another way is to have your containers in the same user defined network. The sim
 
 
 Another type of network **(that I did not include on the lecture I gave to simplify things)** is called an **overlay network**. I intend to make some experiments with this type of network later on, but that's for another time.
-
