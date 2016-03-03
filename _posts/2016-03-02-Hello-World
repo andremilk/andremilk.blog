@@ -1,0 +1,39 @@
+---
+published: false
+---
+
+What is the Hello World equivalent of docker containers? Let's find out.
+
+## Hello World
+
+Docker allows you to run application inside it's containers with a simple command line. 
+
+	[dekozo@dekarch ~]$ docker run ubuntu:14.04 /bin/echo "Hello World"
+	Hello World
+	[dekozo@dekarch ~]$ 
+
+What the command above did was to create a container with an image called ubuntu with the tag 14.04 (I'll explain that later) and then run the /bin/echo command inside it with "Hello World" as it's parameter.
+
+Ok, if that did not amaze you check this out:
+
+	[dekozo@dekarch ~]$ time docker run ubuntu:14.04 /bin/echo "Hello World"
+	Hello World
+
+	real	0m0.979s
+	user	0m0.040s
+	sys	0m0.003s
+	[dekozo@dekarch ~]$ 
+    
+That's one of the beauties of containers.. it's fast. The first talk I gave about Docker at university a professor didn't quite believe it wasn't fake. He was used to launching VMs, waiting for it to provision and then boot.. that was a surprise for him.
+
+Enough flattering...
+
+The command above 
+
+	$ docker run
+    
+searches for the ubuntu image locally and if, not found, downloads it from the dockerhub (or another registry if configured to do so). If you already have the image available locally the command shouldn't take long but if not it will take some time but the next time you use the same image it will be very fast.
+
+
+
+Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
