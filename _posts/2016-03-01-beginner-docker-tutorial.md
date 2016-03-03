@@ -1,7 +1,9 @@
 ---
 published: true
 layout: post
+date: 2016-03-01T13:00:00.000Z
 ---
+
 
 The following posts will be an adaptation of a tutorial I've created for a intro lecture I gave about Docker and it's uses to help Computer Science students in their tasks. 
 
@@ -49,4 +51,4 @@ Let's see:
 	[dekozo@dekarch ~]$ 
 
 
-Yep, it works! 
+Yep, it works!
