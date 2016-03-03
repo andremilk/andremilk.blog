@@ -1,18 +1,20 @@
 ---
 published: false
+layout: post
 ---
+
 
 What is the Hello World equivalent of docker containers? Let's find out.
 
 ## Hello World
 
-Docker allows you to run application inside it's containers with a simple command line. 
+Docker allows you to run applications inside it's containers with a simple command line. 
 
 	[dekozo@dekarch ~]$ docker run ubuntu:14.04 /bin/echo "Hello World"
 	Hello World
 	[dekozo@dekarch ~]$ 
 
-What the command above did was to create a container with an image called ubuntu with the tag 14.04 (I'll explain that later) and then run the /bin/echo command inside it with "Hello World" as it's parameter.
+What the command above did was to create a container using an image called ubuntu with the tag 14.04 (I'll explain that later) and then run the __/bin/echo__ command inside it with "Hello World" as it's parameter.
 
 Ok, if that did not amaze you check this out:
 
@@ -24,9 +26,7 @@ Ok, if that did not amaze you check this out:
 	sys	0m0.003s
 	[dekozo@dekarch ~]$ 
     
-That's one of the beauties of containers.. it's fast. The first talk I gave about Docker at university a professor didn't quite believe it wasn't fake. He was used to launching VMs, waiting for it to provision and then boot.. that was a surprise for him.
-
-Enough flattering...
+That's one of the many beauties of containers.. they are fast. The first talk I gave about Docker at university a professor didn't quite believe it wasn't fake. He was used to launching VMs, waiting for it to provision and then boot.. that was a surprise for him.
 
 The command above will search for the ubuntu image locally and if, not found, download it from the dockerhub (or another registry if configured to do so). If you already have the image available locally the command shouldn't take long but if not it will take some time but the next time you use the same image it will be very fast.
 
@@ -36,9 +36,9 @@ Now let's try something different
 	root@7f31c91fe7e3:/# 
 
 Now you are running a bash session inside a container you've just created. You might wanna play around a bit.. check all the processes running inside the container, the files and verify that they are different from your host system.
-After that you could exit the container with **Ctrl-D** which will exit it and change the container's status to exited (actually, in this case we used the **__--rm__** flag to autoremove the container after it's exited) or you could get out of it with **Ctrl-P and then Ctrl-Q**. 
+After that you could exit the container with **Ctrl-D** which will exit it and change the container's status to exited (actually, in this case we used the **__--rm__** flag to autoremove the container after it's exited) or you could get out of it with **Ctrl-P Ctrl-Q** and it will still be running. 
 
-In the last command we also used the **__--it__** flag which enables us to interact with the container. For further details you should check the docker documentation.. there you will find more about these flags.
+In the last command we also used the **__--it__** flag which enabled us to interact with the container. For further details you should check the docker documentation for the run command.. there you will find more about these flags.
 
 Everytime we create a container in docker and don't name it ourselves a random name will be given to it. This name will consist an adjective, an underscore, and the name of some scientist. (__fun fact: if the combination yield [boring_wozniak](https://github.com/docker/docker/blob/master/pkg/namesgenerator/names-generator.go) docker will reassign another name to the container__)
 
@@ -126,7 +126,3 @@ Ok, we have two containers: __my-container__ and __beserk_mclean__. Let's remove
 
 
 If you check it with  **docker ps -a** you should see there are no more containers. We used the option __-f__ to force docker to remove our running container. If we used just **docker rm my-container berserk_mclean** docker would complain about a running container and asks us to either terminate it or use __-f__.
-
-
-
-
