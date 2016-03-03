@@ -6,6 +6,7 @@ layout: post
 
 
 
+
 What exactly are Docker images? Where and how do they live? How do they reproduce? 
 
 ## Docker images
@@ -156,7 +157,7 @@ For instance:
 	WORKDIR /app
 	/app   WORKDIR abc
 	└── abc   WORKDIR def
-	    └── def ****(We end up here, at /app/abc/def)****
+	    └── def (We end up here, at /app/abc/def)
         
 **CMD** will tell docker what command should be executed when you create a container using this image without passing any command. For instance:
 
