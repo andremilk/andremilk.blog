@@ -1,7 +1,8 @@
 ---
-published: false
+published: true
 layout: post
 ---
+
 
 What exactly are Docker images? Where and how do they live? How do they reproduce? 
 
@@ -221,6 +222,3 @@ If you wish to **remove an image locally** you can do this just like:
 	[dekozo@dekarch ~]$
     
 the __-f__ option will force the image to be removed. If there is any container created (exited or running) using that image docker will report it and won't delete the image.
-
-
-
