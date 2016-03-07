@@ -1,8 +1,9 @@
 ---
 published: true
 layout: post
-date: 2016-03-03T13:00:00.000Z
+date: {}
 ---
+
 
 
 
@@ -14,7 +15,7 @@ My container is lonely... it would like to talk to other containers. How could I
 It's possible to have applications running inside different containers talk to each other. This could be achieved through different ways and depending on what you want to accomplish one way might be better than the others.
 
 ***
-### Port forwarding
+#### Port forwarding
 
 You can have access to a service running inside a container making use of port forwarding
 
