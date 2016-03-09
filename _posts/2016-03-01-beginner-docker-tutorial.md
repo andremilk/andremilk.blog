@@ -21,10 +21,14 @@ After playing around with it a little I was told to look for other linux contain
 
 The thing about (docker) containers is that they aim to create an isolation between processes, namespaces and so on. It does it without the need to add another operating system on top of it and not to mention any hardware at all.
 ***
+
+
 ## Dockerhub
 [Dockerhub](https://hub.docker.com) is a repository of docker images packing a bunch of features and integrations with services like [github](https://github.com/) or [bitbucket](https://bitbucket.org/) to use [automated builds](https://docs.docker.com/docker-hub/builds/) and so on. They offer a free plan that, at the time I'm writing this, enables you to have one private repository. 
 You may deploy your own Docker image [registry](https://docs.docker.com/registry/) if you desire to do so.
 ***
+
+
 ## Installation
 The docker documentation about different [installation procedures](https://docs.docker.com/installation/) for different linux distributions or even Windows or OSX.
 
