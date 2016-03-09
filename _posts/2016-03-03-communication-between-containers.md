@@ -77,7 +77,7 @@ but...
     
 ***
 
-### Networks
+## Networks
 
 Docker has three default networks when you've just installed it. 
 	
@@ -142,7 +142,7 @@ If you add a container to the **host** network, you shall have something like th
 which is exactly the same as my host configurations.
 You can inspect networks on docker using `docker network inspect name-of-network`.
 
-### User defined networks
+## User defined networks
 Another way is to have your containers in the same user defined network. The simplest network kind you can make is a **bridge** type. All of your containers should be on the same docker host and they may communicate between them just by referencing their names. For instance
 
 	[dekozo@dekarch ~]$ docker run --net=bridge-test -itd --name container1
