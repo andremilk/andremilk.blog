@@ -1,8 +1,9 @@
 ---
 published: true
 layout: post
-date: {}
+date: 2016-03-03T14:00:00.000Z
 ---
+
 
 
 
@@ -15,7 +16,8 @@ My container is lonely... it would like to talk to other containers. How could I
 It's possible to have applications running inside different containers talk to each other. This could be achieved through different ways and depending on what you want to accomplish one way might be better than the others.
 
 ***
-#### Port forwarding
+
+## Port forwarding
 
 You can have access to a service running inside a container making use of port forwarding
 
@@ -74,6 +76,7 @@ but...
 	[dekozo@dekarch ~]
     
 ***
+
 ### Networks
 
 Docker has three default networks when you've just installed it. 
@@ -139,7 +142,7 @@ If you add a container to the **host** network, you shall have something like th
 which is exactly the same as my host configurations.
 You can inspect networks on docker using `docker network inspect name-of-network`.
 
-#### User defined networks
+### User defined networks
 Another way is to have your containers in the same user defined network. The simplest network kind you can make is a **bridge** type. All of your containers should be on the same docker host and they may communicate between them just by referencing their names. For instance
 
 	[dekozo@dekarch ~]$ docker run --net=bridge-test -itd --name container1
